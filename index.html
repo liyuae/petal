@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Enn Ulaga Azhagiyae 💙</title>
+    
+    <!-- Aesthetic Fonts: Quicksand for clean text, Dancing Script for elegant handwriting -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           CSS VARIABLES & BLUE SCRAPBOOK THEME
+           ========================================= */
+        :root {
+            --bg-paper: #f0f4f8;       
+            --blue-light: #d4e4f7;     
+            --blue-medium: #7fa1c3;    
+            --blue-dark: #1b3b5c;      
+            --accent-blue: #4a7c9d;    
+            --card-bg: rgba(255, 255, 255, 0.85);
+            
+            --shadow-soft: 0 8px 30px rgba(27, 59, 92, 0.1);
+            --shadow-hover: 0 12px 40px rgba(27, 59, 92, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth; /* Smooth scrolling optimization */
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--blue-dark);
+            background-color: var(--bg-paper);
+            background-image: 
+                linear-gradient(var(--blue-light) 1px, transparent 1px),
+                linear-gradient(90deg, var(--blue-light) 1px, transparent 1px);
+            background-size: 30px 30px;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        h1, h2, h3 { color: var(--blue-dark); font-weight: 700; text-align: center; }
+        
+        .handwriting {
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        /* =========================================
+           AESTHETIC BUBU DUDU DOODLES & BLUE TAPE
+           ========================================= */
+        .decorations-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0; 
+        }
+
+        .taped-img {
+            position: absolute;
+            background: #fff;
+            padding: 8px 8px 25px 8px; /* Polaroid frame look */
+            box-shadow: 4px 8px 25px rgba(27, 59, 92, 0.18);
+            border-radius: 3px;
+            opacity: 0; 
+            transform: scale(0.8) translateY(30px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: transform, opacity; /* Performance optimization */
+        }
+
+        .taped-img.active {
+            opacity: 0.95;
+        }
+
+        /* The Blue Tape Effect */
+        .taped-img::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-4deg);
+            width: 70px;
+            height: 22px;
+            background: rgba(127, 161, 195, 0.85); 
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+
+        .taped-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 1px solid var(--blue-light);
+        }
+
+        /* Optimized Floating Animation - translateZ(0) forces GPU acceleration */
+        @keyframes swayFloat {
+            0% { transform: translateY(0) rotate(var(--rot)) translateZ(0); }
+            100% { transform: translateY(-15px) rotate(calc(var(--rot) + 2deg)) translateZ(0); }
+        }
+
+        /* Layout for Desktop */
+        .img-1 { top: 2%; left: 3%; width: 190px; --rot: -6deg; animation: swayFloat 5s ease-in-out infinite alternate; }
+        .img-2 { top: 6%; right: 4%; width: 200px; --rot: 8deg; animation: swayFloat 6s ease-in-out infinite alternate-reverse; }
+        .img-3 { top: 12%; left: 5%; width: 170px; --rot: -4deg; animation: swayFloat 5.5s ease-in-out infinite alternate; }
+        .img-4 { top: 18%; right: 2%; width: 180px; --rot: 5deg; animation: swayFloat 7s ease-in-out infinite alternate-reverse; }
+        .img-5 { top: 24%; left: 2%; width: 190px; --rot: -8deg; animation: swayFloat 6s ease-in-out infinite alternate; }
+        .img-6 { top: 29%; right: 5%; width: 180px; --rot: 4deg; animation: swayFloat 5s ease-in-out infinite alternate-reverse; }
+        .img-7 { top: 36%; left: 4%; width: 200px; --rot: -5deg; animation: swayFloat 6.5s ease-in-out infinite alternate; }
+        .img-8 { top: 42%; right: 3%; width: 180px; --rot: 6deg; animation: swayFloat 5.5s ease-in-out infinite alternate-reverse; }
+        .img-9 { top: 48%; left: 3%; width: 190px; --rot: 12deg; animation: swayFloat 6s ease-in-out infinite alternate; }
+        .img-10 { top: 54%; right: 4%; width: 180px; --rot: -5deg; animation: swayFloat 5.5s ease-in-out infinite alternate-reverse; }
+        .img-11 { top: 60%; left: 5%; width: 170px; --rot: 7deg; animation: swayFloat 6.5s ease-in-out infinite alternate; }
+        .img-12 { top: 66%; right: 2%; width: 190px; --rot: -4deg; animation: swayFloat 7s ease-in-out infinite alternate-reverse; }
+        .img-13 { top: 72%; left: 2%; width: 180px; --rot: -9deg; animation: swayFloat 6s ease-in-out infinite alternate; }
+        .img-14 { top: 78%; right: 5%; width: 200px; --rot: 3deg; animation: swayFloat 5s ease-in-out infinite alternate-reverse; }
+        .img-15 { top: 84%; left: 4%; width: 180px; --rot: -6deg; animation: swayFloat 6.5s ease-in-out infinite alternate; }
+        .img-16 { top: 89%; right: 3%; width: 190px; --rot: 5deg; animation: swayFloat 5.5s ease-in-out infinite alternate-reverse; }
+        .img-17 { top: 94%; left: 3%; width: 170px; --rot: -4deg; animation: swayFloat 6s ease-in-out infinite alternate; }
+        .img-18 { top: 97%; right: 4%; width: 180px; --rot: 8deg; animation: swayFloat 5s ease-in-out infinite alternate-reverse; }
+
+        /* =========================================
+           MOBILE OPTIMIZATIONS (The Fixes)
+           ========================================= */
+        @media screen and (max-width: 1024px) {
+            .taped-img { width: 130px !important; }
+            .img-3, .img-6, .img-9, .img-12, .img-15, .img-18 { display: none; } 
+        }
+
+        @media screen and (max-width: 768px) {
+            /* Hide half the images on mobile to keep it perfectly clean and lag-free */
+            .img-3, .img-4, .img-7, .img-8, .img-11, .img-12, .img-15, .img-16 { display: none; }
+            
+            /* Make remaining background images small and fade them out so text is readable over them */
+            .taped-img { 
+                width: 85px !important; 
+                padding: 5px 5px 15px 5px !important; 
+            }
+            .taped-img.active { opacity: 0.25 !important; } /* Low opacity background effect */
+
+            /* Push strictly to the invisible edges */
+            .img-1, .img-5, .img-9, .img-13, .img-17 { left: -15px; }
+            .img-2, .img-6, .img-10, .img-14, .img-18 { right: -15px; }
+            
+            .taped-img::before { width: 40px; height: 15px; top: -8px; } /* Smaller tape */
+
+            .glass-card { 
+                padding: 2rem 1.2rem !important; 
+                margin: 1.5rem 1rem !important;
+            }
+            
+            .hero-title { font-size: 2.2rem !important; }
+            .hero-name { font-size: 4.5rem !important; }
+            .content-text { text-align: center !important; }
+        }
+
+        /* =========================================
+           GLOBAL LAYOUT & GLASS CARDS
+           ========================================= */
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            padding: clamp(2rem, 5vw, 3.5rem);
+            margin: 2rem auto;
+            max-width: 850px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            z-index: 10;
+            will-change: transform;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-3px) translateZ(0); /* translateZ for GPU rendering */
+            box-shadow: var(--shadow-hover);
+        }
+
+        .section-divider {
+            text-align: center;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin: 3.5rem 0;
+            color: var(--accent-blue);
+            letter-spacing: 15px;
+        }
+
+        /* =========================================
+           TEXT ANIMATIONS & HIGHLIGHTS
+           ========================================= */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(25px) translateZ(0);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: opacity, transform;
+        }
+        
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+        }
+
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
+        .delay-4 { transition-delay: 0.6s; }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(212, 228, 247, 0.9) 0%, rgba(212, 228, 247, 0.9) 100%);
+            background-repeat: no-repeat;
+            background-size: 0% 100%;
+            transition: background-size 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            padding: 0 4px;
+            border-radius: 4px;
+            color: var(--blue-dark);
+            font-weight: 700;
+        }
+
+        .highlight.active { background-size: 100% 100%; }
+
+        /* =========================================
+           HERO SECTION & PFP
+           ========================================= */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 0.5rem; letter-spacing: 1px; }
+        .hero-subtitle { font-size: clamp(1.2rem, 3vw, 1.8rem); margin-bottom: 1.5rem; font-weight: 500; }
+        
+        /* The Big Square PFP Frame */
+        .hero-pfp-container {
+            margin: 1.5rem auto;
+            position: relative;
+            display: inline-block;
+            --rot: -3deg;
+            animation: swayFloat 6s ease-in-out infinite alternate;
+            will-change: transform;
+            z-index: 11;
+        }
+
+        .hero-pfp {
+            background: #fff;
+            padding: 12px 12px 35px 12px; /* Polaroid frame look */
+            box-shadow: 4px 10px 30px rgba(27, 59, 92, 0.2);
+            border-radius: 4px;
+            position: relative;
+            width: 280px;  /* Made big and prominent */
+            height: 280px; /* Square shaped */
+            transition: transform 0.4s ease;
+        }
+
+        .hero-pfp:hover {
+            transform: scale(1.03);
+        }
+
+        .hero-pfp::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(4deg);
+            width: 90px;
+            height: 28px;
+            background: rgba(127, 161, 195, 0.9); /* Blue tape */
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 12;
+        }
+
+        .hero-pfp img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 1px solid var(--blue-light);
+            border-radius: 2px;
+        }
+
+        .hero-name {
+            font-size: clamp(5.5rem, 15vw, 10rem);
+            line-height: 1.2;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(27, 59, 92, 0.15);
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-pfp {
+                width: 210px; /* Adjusted optimally for mobile */
+                height: 210px;
+                padding: 10px 10px 25px 10px;
+            }
+        }
+
+        /* =========================================
+           POEM & LETTER SECTION
+           ========================================= */
+        .content-text {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            line-height: 1.9;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .poem-stanza { margin-bottom: 1.5rem; }
+
+        /* =========================================
+           QUOTES & TRAITS SECTION (PERFECT ALIGNMENT)
+           ========================================= */
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-items: center; 
+        }
+
+        .quote-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column; /* Perfect for text wrapping */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--blue-dark);
+            border: 1px dashed var(--blue-medium);
+            box-shadow: 0 4px 15px rgba(27, 59, 92, 0.05);
+            transition: all 0.3s ease;
+            will-change: transform, border-color, box-shadow;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-5px) translateZ(0);
+            box-shadow: 0 8px 25px rgba(27, 59, 92, 0.12);
+            border-color: var(--accent-blue);
+        }
+
+        .trait-card { gap: 8px; }
+        
+        .trait-emoji {
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            --rot: 0deg;
+            animation: swayFloat 4s ease-in-out infinite alternate;
+            will-change: transform;
+        }
+
+        /* =========================================
+           SPOTIFY & BUTTONS
+           ========================================= */
+        .spotify-container {
+            margin: 2rem auto;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            background: transparent;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            border: 1px solid var(--blue-light);
+            border-radius: 50px;
+            background: var(--blue-dark);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Quicksand', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(27, 59, 92, 0.2);
+            transition: all 0.3s ease;
+            will-change: transform, background, box-shadow;
+        }
+
+        button:hover {
+            transform: translateY(-3px) translateZ(0);
+            background: var(--accent-blue);
+            box-shadow: 0 8px 25px rgba(27, 59, 92, 0.3);
+        }
+
+        .hidden-message {
+            margin-top: 1.5rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .hidden-message.show {
+            opacity: 1;
+            height: auto;
+            padding: 1rem;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border-top: 1px dashed var(--blue-medium);
+            margin-top: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AESTHETIC BUBU DUDU TAPED DOODLES (Optimized) -->
+    <div class="decorations-container">
+        <div class="taped-img img-1"><img src="https://i.pinimg.com/736x/71/ab/83/71ab8315413017a06f34a934b8ca1eef.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-2"><img src="https://i.pinimg.com/736x/29/fc/44/29fc44ade8a40b8a8b1575aa4d8ae6ad.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-3"><img src="https://i.pinimg.com/1200x/5d/4f/e2/5d4fe22a3faec951d0d9452220dcf060.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-4"><img src="https://i.pinimg.com/736x/71/c6/7e/71c67efb064f6256d96f140634679e26.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-5"><img src="https://i.pinimg.com/1200x/84/d2/07/84d2077f3616cdacfcac9b2a56ea54a1.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-6"><img src="https://i.pinimg.com/1200x/d9/c3/d2/d9c3d269a489986ebd70b6451cdbadb8.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-7"><img src="https://i.pinimg.com/736x/cc/cc/e9/cccce9bf499de5e8085ee103377841aa.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-8"><img src="https://i.pinimg.com/736x/50/87/01/50870147a0ea5aca6fe17bed7f81ead2.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-9"><img src="https://i.pinimg.com/1200x/b1/4f/99/b14f998446b89940e1a7773de131aad2.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-10"><img src="https://i.pinimg.com/736x/a0/69/e0/a069e0e469a05a85c4240ce0e72da65d.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-11"><img src="https://i.pinimg.com/1200x/f7/fb/bc/f7fbbc444ca5755778e5859192de2b43.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-12"><img src="https://i.pinimg.com/736x/6c/35/0e/6c350ec22c058e1c47ceb61f6ad69f56.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-13"><img src="https://i.pinimg.com/1200x/8a/19/f5/8a19f5ca3f07d87f66ce10393d374149.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-14"><img src="https://i.pinimg.com/736x/b1/dc/53/b1dc536a19204e0d636be20518d6a377.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-15"><img src="https://i.pinimg.com/736x/29/38/17/2938173b8f45fa7e346bd8b3856fee38.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-16"><img src="https://i.pinimg.com/1200x/95/36/60/953660a37587301cfc9df8500f47c2ea.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-17"><img src="https://i.pinimg.com/736x/f2/0a/bc/f20abc76b43fc26643cc2cdb69503a99.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+        <div class="taped-img img-18"><img src="https://i.pinimg.com/1200x/7f/d1/68/7fd168448a39d357d4db95ba1abec766.jpg" alt="Cute Bubu Dudu" loading="lazy"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <h1 class="hero-title reveal-text">Happy Girlfriend Day 💙</h1>
+        <p class="hero-subtitle reveal-text delay-1">To enn ulaga azhagiyae... ✨</p>
+        
+        <!-- BIG, SQUARE, TAPED PFP -->
+        <div class="hero-pfp-container reveal-text delay-2">
+            <div class="hero-pfp">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczN5jENLzxmgZyS2DlJjoP60aY92-LjTFyb73yWyRyFvoVK9LZ1HvnA0KxKSLy5OhcTYgxL0wApvSWLTQmpdtSKu9vP9XIsumTskBTxvwogGYZx1Y7IG8fOlgogSdxmJlJ-_FIdMx8dw9yAhV481DWU=w964-h964-s-no-gm" alt="Mary's Beautiful Face" loading="eager">
+            </div>
+        </div>
+
+        <div class="hero-name handwriting reveal-text delay-3">Mary</div>
+        <p class="content-text reveal-text delay-4" style="max-width: 600px; color: var(--accent-blue);">
+            "Even though we haven't met, <span class="highlight">our souls already have. 🦋</span>"
+        </p>
+    </section>
+
+    <div class="container">
+
+        <div class="section-divider">✦ ✧ ✦</div>
+
+        <!-- MAIN LOVE LETTER -->
+        <section id="letter">
+            <div class="glass-card reveal-text">
+                <h2 style="margin-bottom: 1.5rem;">My Dearest Mary, 🥺</h2>
+                <div class="content-text">
+                    <p class="reveal-text delay-1" style="margin-bottom: 1rem;">Thank you for being in my life, <span class="highlight">vaenamavalae</span>. It's crazy to think about how much you mean to me, even though we haven't stood in the same room yet. You've brought so much light, peace, and happiness into my days just by being you.</p>
+                    <p class="reveal-text delay-2" style="margin-bottom: 1rem;">I don't need to hold your hand right now to know exactly how warm your heart is. Every text, every call, every laugh we share makes the distance feel like nothing at all. 🤍</p>
+                    <p class="reveal-text delay-3">I am so incredibly lucky that out of all the people in the world, my soul found yours. You are my favorite notification, my comfort, and my absolute favorite person. 🫶🏼</p>
+                </div>
+                <div class="handwriting reveal-text delay-3" style="text-align: right; font-size: 2.2rem; margin-top: 2rem;">
+                    Yours, Always 💙
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">☾ ⋆ ☽</div>
+
+        <!-- SOULMATE POEM -->
+        <section id="poem">
+            <div class="glass-card reveal-text" style="background: rgba(255, 255, 255, 0.95);">
+                <h2 style="margin-bottom: 2rem;">When Souls Meet ✨</h2>
+                <div class="content-text handwriting" style="font-size: 1.8rem; line-height: 1.8;">
+                    <div class="poem-stanza reveal-text delay-1">
+                        We haven't shared a physical space,<br>
+                        Nor looked directly at each other's face.<br>
+                        But distance is just a word, it's true,<br>
+                        Because <span class="highlight">my soul has already met you. 🦋</span>
+                    </div>
+                    <div class="poem-stanza reveal-text delay-2">
+                        Thanks for being the peace I crave,<br>
+                        For every smile and laugh you gave.<br>
+                        In this digital world, you're my realest part,<br>
+                        Vaenamavalae, <span class="highlight">you own my heart. 🥺💙</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">♪ ♫ ♪</div>
+
+        <!-- SPOTIFY TRACK & INTERACTIVE -->
+        <section id="music">
+            <div class="glass-card reveal-text">
+                <h2 style="margin-bottom: 1rem;">You Are Literally This Song 🎧🎶</h2>
+                <p class="content-text" style="margin-bottom: 1.5rem; font-style: italic; color: var(--accent-blue);">
+                    You already know how much I yap about this song, but it's only because it reminds me of you every single time. <span class="highlight">You are literally this song to me. 🥺💙</span>
+                </p>
+                
+                <div class="spotify-container reveal-text delay-1">
+                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5EjBg3FGNH0EgO8CjFAkDn?utm_source=generator&si=5ba271229b0b449c" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+
+                <div class="btn-group reveal-text delay-2">
+                    <button onclick="revealMessage()">Tap for a surprise ✨</button>
+                </div>
+
+                <div id="secretMessage" class="hidden-message handwriting">
+                    I can't wait for the day I finally get to hug you. I love you, vaenamavalae! 💙
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">✨ 🤍 ✨</div>
+
+        <!-- TRAITS SECTION (PERFECTLY CENTERED GRID) -->
+        <section id="traits">
+            <h2 class="reveal-text" style="text-align: center; margin-bottom: 1rem;">Because You're You ✨</h2>
+            <p class="content-text reveal-text delay-1" style="text-align: center; margin-bottom: 2.5rem; color: var(--accent-blue);">I could write a whole book about everything I love about you, but here are just a few... 🦋</p>
+            
+            <div class="quotes-grid">
+                <div class="quote-card trait-card reveal-text delay-1">
+                    <div class="trait-emoji">🤪</div>
+                    <div><span class="highlight">Your Goofy Energy</span><br>that always makes me smile</div>
+                </div>
+                <div class="quote-card trait-card reveal-text delay-2">
+                    <div class="trait-emoji">🥺</div>
+                    <div><span class="highlight">Your Gorgeous Eyes</span><br>that I could get lost in</div>
+                </div>
+                <div class="quote-card trait-card reveal-text delay-3">
+                    <div class="trait-emoji">🗣️</div>
+                    <div><span class="highlight">Your Comforting Voice</span><br>which is my favorite sound</div>
+                </div>
+                <div class="quote-card trait-card reveal-text delay-1">
+                    <div class="trait-emoji">😊</div>
+                    <div><span class="highlight">Your Beautiful Smile</span><br>that literally lights up my day</div>
+                </div>
+                <div class="quote-card trait-card reveal-text delay-2">
+                    <div class="trait-emoji">🤍</div>
+                    <div><span class="highlight">Your Pure Heart</span><br>and how deeply you care</div>
+                </div>
+                <div class="quote-card trait-card reveal-text delay-3">
+                    <div class="trait-emoji">🦋</div>
+                    <div><span class="highlight">Just... YOU.</span><br>Exactly as you are.</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">✦ ✧ ✦</div>
+
+        <!-- LOVE QUOTES (PERFECTLY CENTERED GRID) -->
+        <section id="quotes">
+            <h2 class="reveal-text" style="text-align: center; margin-bottom: 2rem;">Just A Reminder 💌</h2>
+            <div class="quotes-grid">
+                <div class="quote-card reveal-text delay-1">"Distance gives us a reason to love harder." 🤍</div>
+                <div class="quote-card reveal-text delay-2">"My favorite place is inside your heart." 🫶🏼</div>
+                <div class="quote-card reveal-text delay-3">"You are my favorite 'hello' and my hardest 'goodbye'." 🥺</div>
+                <div class="quote-card reveal-text delay-1">"Even miles apart, you're the closest thing to my soul." ✨</div>
+                <div class="quote-card reveal-text delay-2">"Every love story is beautiful, but ours is my absolute favorite." 🦋</div>
+                <div class="quote-card reveal-text delay-3"><span class="highlight">"You deserve all the love in the world, and I want to give it to you." 💙</span></div>
+            </div>
+        </section>
+
+    </div> <!-- End Container -->
+
+    <!-- FOOTER -->
+    <footer>
+        <h2 class="handwriting reveal-text" style="font-size: 2.5rem;">"No matter the distance, my heart will always choose you." 🦋</h2>
+        <div class="hero-name handwriting reveal-text delay-1" style="font-size: 3rem; margin: 1rem 0;">Mary & Me 💙</div>
+        <p class="content-text reveal-text delay-2" style="font-size: 1rem; margin-top: 1rem; font-weight: 600; color: var(--accent-blue);">Made with endless love for vaenamavalae. ✨</p>
+    </footer>
+
+    <!-- =========================================
+         JAVASCRIPT LOGIC
+         ========================================= -->
+    <script>
+        // --- Smooth Scroll Text Reveal & Highlight Animations ---
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -30px 0px"
+        };
+
+        // Use Intersection Observer for highly optimized, lag-free scroll animations
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add the active class to trigger the CSS transition
+                    entry.target.classList.add('active');
+                    
+                    // Stop observing elements once they are revealed (except background images if desired)
+                    if (!entry.target.classList.contains('taped-img')) {
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe text reveal elements
+        document.querySelectorAll('.reveal-text').forEach(el => scrollObserver.observe(el));
+        
+        // Observe highlighter spans
+        document.querySelectorAll('.highlight').forEach(el => scrollObserver.observe(el));
+
+        // Observe the taped images so they pop in beautifully
+        document.querySelectorAll('.taped-img').forEach((el, index) => {
+            // Add a slight staggered delay to the images based on their index
+            el.style.transitionDelay = `${(index % 3) * 0.2}s`;
+            scrollObserver.observe(el);
+        });
+
+        // --- Interactive Button Logic ---
+        function revealMessage() {
+            const msg = document.getElementById('secretMessage');
+            msg.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
